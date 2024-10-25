@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="filmes_solicitados.xsl"?>
+<FilmesSolicitados>
+  <Filme>
+    <Codigo>103</Codigo>
+    <Nombre>BUCKET BROTHERHOOD</Nombre>
+    <VecesAlquilada>34</VecesAlquilada>
+    <TotalGenerado>180.66</TotalGenerado>
+  </Filme>
+  <Filme>
+    <Codigo>738</Codigo>
+    <Nombre>ROCKETEER MOTHER</Nombre>
+    <VecesAlquilada>33</VecesAlquilada>
+    <TotalGenerado>116.67</TotalGenerado>
+  </Filme>
+  <Filme>
+    <Codigo>730</Codigo>
+    <Nombre>RIDGEMONT SUBMARINE</Nombre>
+    <VecesAlquilada>32</VecesAlquilada>
+    <TotalGenerado>130.68</TotalGenerado>
+  </Filme>
+  <Filme>
+    <Codigo>489</Codigo>
+    <Nombre>JUGGLER HARDLY</Nombre>
+    <VecesAlquilada>32</VecesAlquilada>
+    <TotalGenerado>96.68</TotalGenerado>
+  </Filme>
+  <Filme>
+    <Codigo>767</Codigo>
+    <Nombre>SCALAWAG DUCK</Nombre>
+    <VecesAlquilada>32</VecesAlquilada>
+    <TotalGenerado>172.68</TotalGenerado>
+  </Filme>
+  <Filme>
+    <Codigo>331</Codigo>
+    <Nombre>FORWARD TEMPLE</Nombre>
+    <VecesAlquilada>32</VecesAlquilada>
+    <TotalGenerado>128.68</TotalGenerado>
+  </Filme>
+  <Filme>
+    <Codigo>382</Codigo>
+    <Nombre>GRIT CLOCKWORK</Nombre>
+    <VecesAlquilada>32</VecesAlquilada>
+    <TotalGenerado>110.68</TotalGenerado>
+  </Filme>
+  <Filme>
+    <Codigo>973</Codigo>
+    <Nombre>WIFE TURN</Nombre>
+    <VecesAlquilada>31</VecesAlquilada>
+    <TotalGenerado>223.69</TotalGenerado>
+  </Filme>
+  <Filme>
+    <Codigo>735</Codigo>
+    <Nombre>ROBBERS JOON</Nombre>
+    <VecesAlquilada>31</VecesAlquilada>
+    <TotalGenerado>105.69</TotalGenerado>
+  </Filme>
+  <Filme>
+    <Codigo>31</Codigo>
+    <Nombre>APACHE DIVINE</Nombre>
+    <VecesAlquilada>31</VecesAlquilada>
+    <TotalGenerado>178.69</TotalGenerado>
+  </Filme>
+  <GranTotalGenerado>1444.8</GranTotalGenerado>
+</FilmesSolicitados>
