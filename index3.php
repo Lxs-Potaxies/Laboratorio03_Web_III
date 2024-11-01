@@ -13,6 +13,11 @@ try {
     exit;
 }
 
+// Función para convertir a ISO-8859-1
+function convertirTexto($texto) {
+    return iconv('UTF-8', 'ISO-8859-1//TRANSLIT', $texto);
+}
+
 // Variables de fecha
 $fechaInicio = '2005-01-01'; // Cambia la fecha inicial
 $fechaFin = '2023-12-31'; // Cambia la fecha final
@@ -56,16 +61,16 @@ $pdf->AddPage();
 $pdf->SetFont('Arial', 'B', 16);
 
 // Título
-$pdf->Cell(0, 10, 'Sakila Entretenimientos', 0, 1, 'C');
-$pdf->Cell(0, 10, "Reporte de ingresos desde $fechaInicio a $fechaFin", 0, 1, 'C');
+$pdf->Cell(0, 10, convertirTexto('Sakila Entretenimientos'), 0, 1, 'C');
+$pdf->Cell(0, 10, convertirTexto("Reporte de ingresos desde $fechaInicio a $fechaFin"), 0, 1, 'C');
 $pdf->Ln(10);
 
 // Encabezados
 $pdf->SetFont('Arial', 'B', 12);
-$pdf->Cell(30, 10, 'Almacén', 1);
-$pdf->Cell(80, 10, 'Nombre', 1);
-$pdf->Cell(40, 10, 'Género', 1);
-$pdf->Cell(40, 10, 'Monto', 1);
+$pdf->Cell(30, 10, convertirTexto('Almacén'), 1);
+$pdf->Cell(80, 10, convertirTexto('Nombre'), 1);
+$pdf->Cell(40, 10, convertirTexto('Género'), 1);
+$pdf->Cell(40, 10, convertirTexto('Monto'), 1);
 $pdf->Ln();
 
 // Datos
@@ -73,10 +78,10 @@ $pdf->SetFont('Arial', '', 12);
 $totalAlquiler = 0;
 
 foreach ($resultados as $row) {
-    $pdf->Cell(30, 10, $row['almacen'], 1);
-    $pdf->Cell(80, 10, $row['nombre'], 1);
-    $pdf->Cell(40, 10, $row['genero'], 1);
-    $pdf->Cell(40, 10, number_format($row['monto'], 2), 1);
+    $pdf->Cell(30, 10, convertirTexto($row['almacen']), 1);
+    $pdf->Cell(80, 10, convertirTexto($row['nombre']), 1);
+    $pdf->Cell(40, 10, convertirTexto($row['genero']), 1);
+    $pdf->Cell(40, 10, convertirTexto(number_format($row['monto'], 2)), 1);
     $pdf->Ln();
     $totalAlquiler += $row['monto'];
 }
@@ -84,7 +89,7 @@ foreach ($resultados as $row) {
 // Total acumulado
 $pdf->Ln(10);
 $pdf->SetFont('Arial', 'B', 12);
-$pdf->Cell(0, 10, "Total Alquiler Acumulado por Almacén: " . number_format($totalAlquiler, 2), 0, 1, 'R');
+$pdf->Cell(0, 10, convertirTexto("Total Alquiler Acumulado por Almacén: " . number_format($totalAlquiler, 2)), 0, 1, 'R');
 
 // Salvar el PDF
 $pdf->Output('D', 'reporte_ingresos.pdf');

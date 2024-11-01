@@ -20,10 +20,10 @@
     <TotalGenerado>130.68</TotalGenerado>
   </Filme>
   <Filme>
-    <Codigo>489</Codigo>
-    <Nombre>JUGGLER HARDLY</Nombre>
+    <Codigo>382</Codigo>
+    <Nombre>GRIT CLOCKWORK</Nombre>
     <VecesAlquilada>32</VecesAlquilada>
-    <TotalGenerado>96.68</TotalGenerado>
+    <TotalGenerado>110.68</TotalGenerado>
   </Filme>
   <Filme>
     <Codigo>767</Codigo>
@@ -32,22 +32,22 @@
     <TotalGenerado>172.68</TotalGenerado>
   </Filme>
   <Filme>
+    <Codigo>489</Codigo>
+    <Nombre>JUGGLER HARDLY</Nombre>
+    <VecesAlquilada>32</VecesAlquilada>
+    <TotalGenerado>96.68</TotalGenerado>
+  </Filme>
+  <Filme>
     <Codigo>331</Codigo>
     <Nombre>FORWARD TEMPLE</Nombre>
     <VecesAlquilada>32</VecesAlquilada>
     <TotalGenerado>128.68</TotalGenerado>
   </Filme>
   <Filme>
-    <Codigo>382</Codigo>
-    <Nombre>GRIT CLOCKWORK</Nombre>
-    <VecesAlquilada>32</VecesAlquilada>
-    <TotalGenerado>110.68</TotalGenerado>
-  </Filme>
-  <Filme>
-    <Codigo>973</Codigo>
-    <Nombre>WIFE TURN</Nombre>
+    <Codigo>418</Codigo>
+    <Nombre>HOBBIT ALIEN</Nombre>
     <VecesAlquilada>31</VecesAlquilada>
-    <TotalGenerado>223.69</TotalGenerado>
+    <TotalGenerado>81.69</TotalGenerado>
   </Filme>
   <Filme>
     <Codigo>735</Codigo>
@@ -56,10 +56,10 @@
     <TotalGenerado>105.69</TotalGenerado>
   </Filme>
   <Filme>
-    <Codigo>31</Codigo>
-    <Nombre>APACHE DIVINE</Nombre>
+    <Codigo>1000</Codigo>
+    <Nombre>ZORRO ARK</Nombre>
     <VecesAlquilada>31</VecesAlquilada>
-    <TotalGenerado>178.69</TotalGenerado>
+    <TotalGenerado>214.69</TotalGenerado>
   </Filme>
-  <GranTotalGenerado>1444.8</GranTotalGenerado>
+  <GranTotalGenerado>1338.8</GranTotalGenerado>
 </FilmesSolicitados>

@@ -8,6 +8,9 @@ $dbname = "NorthWind";
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
+// Establecer conjunto de caracteres a UTF-8
+mysqli_set_charset($conn, "utf8");
+
 // Verificar conexión
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
@@ -36,6 +39,11 @@ $facturasQuery->execute();
 $facturasResult = $facturasQuery->get_result();
 ?>
 <?php
+
+// Función para convertir a ISO-8859-1
+function convertirTexto($texto) {
+    return iconv('UTF-8', 'ISO-8859-1//TRANSLIT', $texto);
+}
 require('fpdf/fpdf.php');
 
 class PDF extends FPDF {
@@ -46,11 +54,12 @@ class PDF extends FPDF {
         $this->Cell(0, 10, 'Reporte de Facturas', 0, 1, 'C');
         // Datos del cliente
         $this->SetFont('Arial', '', 10);
-        $this->Cell(0, 10, 'Cliente: ' . $cliente['CompanyName'], 0, 1);
-        $this->Cell(0, 10, 'Contacto: ' . $cliente['ContactTitle'] . ' ' . $cliente['ContactName'], 0, 1);
-        $this->Cell(0, 10, 'Ubicación: ' . $cliente['Country'] . ', ' . $cliente['City'] . ', ' . $cliente['PostalCode'], 0, 1);
-        $this->Cell(0, 10, 'Rango de Fechas: ' . date('d/M/Y', strtotime($fechaInicio)) . ' - ' . date('d/M/Y', strtotime($fechaFinal)), 0, 1);
+        $this->Cell(0, 10, convertirTexto('Cliente: ' . $cliente['CompanyName']), 0, 1);
+        $this->Cell(0, 10, convertirTexto('Contacto: ' . $cliente['ContactTitle'] . ' ' . $cliente['ContactName']), 0, 1);
+        $this->Cell(0, 10, convertirTexto('Ubicación: ' . $cliente['Country'] . ', ' . $cliente['City'] . ', ' . $cliente['PostalCode']), 0, 1);
+        $this->Cell(0, 10, convertirTexto('Rango de Fechas: ' . date('d/M/Y', strtotime($fechaInicio)) . ' - ' . date('d/M/Y', strtotime($fechaFinal))), 0, 1);
         $this->Ln(10); // Espacio
+        
     }
 
     function Footer() {
@@ -71,10 +80,11 @@ while ($factura = $facturasResult->fetch_assoc()) {
     // Información de la factura
     $pdf->SetFont('Arial', 'B', 10);
     $pdf->Cell(0, 10, 'Factura #: ' . $factura['OrderID'], 0, 1);
-    $pdf->Cell(0, 10, 'Fecha de Facturación: ' . date('d/M/Y', strtotime($factura['OrderDate'])), 0, 1);
-    $pdf->Cell(0, 10, 'Empleado: ' . $factura['FirstName'] . ' ' . $factura['LastName'], 0, 1);
-    $pdf->Cell(0, 10, 'Requerida: ' . date('d/M/Y', strtotime($factura['RequiredDate'])), 0, 1);
-    $pdf->Cell(0, 10, 'Despachada: ' . date('d/M/Y', strtotime($factura['ShippedDate'])), 0, 1);
+    $pdf->Cell(0, 10, convertirTexto('Fecha de Facturación: ' . date('d/M/Y', strtotime($factura['OrderDate']))), 0, 1);
+    $pdf->Cell(0, 10, convertirTexto('Empleado: ' . $factura['FirstName'] . ' ' . $factura['LastName']), 0, 1);
+    $pdf->Cell(0, 10, convertirTexto('Requerida: ' . date('d/M/Y', strtotime($factura['RequiredDate']))), 0, 1);
+    $pdf->Cell(0, 10, convertirTexto('Despachada: ' . date('d/M/Y', strtotime($factura['ShippedDate']))), 0, 1);
+    
     $pdf->Ln(5);
 
     // Detalles de los productos en la factura
@@ -99,15 +109,16 @@ while ($factura = $facturasResult->fetch_assoc()) {
     $subtotal = 0;
 
     while ($producto = $productosResult->fetch_assoc()) {
-        $pdf->Cell(40, 10, '', 1);  // Aquí puedes agregar un código si lo deseas
-        $pdf->Cell(60, 10, $producto['ProductName'], 1);
-        $pdf->Cell(20, 10, $producto['Quantity'], 1);
-        $pdf->Cell(30, 10, number_format($producto['UnitPrice'], 2), 1);
-        $pdf->Cell(20, 10, $producto['Discount'] . '%', 1);
-        $pdf->Cell(30, 10, number_format($producto['Total'], 2), 1);
+        $pdf->Cell(40, 10, '', 1); 
+        $pdf->Cell(60, 10, convertirTexto($producto['ProductName']), 1);
+        $pdf->Cell(20, 10, convertirTexto($producto['Quantity']), 1);
+        $pdf->Cell(30, 10, convertirTexto(number_format($producto['UnitPrice'], 2)), 1);
+        $pdf->Cell(20, 10, convertirTexto($producto['Discount'] . '%'), 1);
+        $pdf->Cell(30, 10, convertirTexto(number_format($producto['Total'], 2)), 1);
         $pdf->Ln();
-
+        
         $subtotal += $producto['Total'];
+        
     }
 
     // Imprimir total de la factura
